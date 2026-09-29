@@ -1,0 +1,198 @@
+html {
+  font-family: Arial;
+  display: inline-block;
+  text-align: left;
+}
+
+body {
+  font-family: Arial;
+  background-color: #ffffff;
+  margin: 1px auto; 
+  padding-bottom: 20px;
+  text-align: left;
+  display: flex;
+  flex-direction: column; 
+}
+
+h1{
+ color: #3271a2;   /* blue color */
+ font-size: 36px;
+ text-indent: 5px;
+ margin-top: 4px;
+ margin-bottom: 4px;
+}
+
+h2 {
+ font-size: 30px;
+ text-indent: 5px;
+ margin-top: 4px;
+ margin-bottom: 4px;
+}
+
+/* used for heading of table */
+h3 {
+/* color: #3271a2; */ 
+ font-size: 24px;
+ text-indent: 5px;
+ margin-top: 4px;
+ margin-bottom: 4px;
+}
+
+/* used for column "selection */
+h4 {
+ font-size: 18px;
+ text-indent: 5px;
+ margin-top: 4px;
+ margin-bottom: 4px;
+}
+ 
+
+p { 
+ color: #000000; 
+ font-size: 16px;
+ text-indent: 10px;
+ margin-top: 4px;
+ margin-bottom: 4px;
+}
+ 
+td {
+ text-indent: 5px; 
+ margin-top: 4px;
+ margin-bottom: 4px;
+} 
+ 
+/*
+td { 
+   width: fit-content;
+   height: 24px; 
+}
+*/ 
+/*tr {
+  height: 24px;
+} 
+*/ 
+.button {
+  display: inline-block;
+  background-color: #04AA6D; /*red color */
+  border: none;
+  border-radius: 4px;
+  color: white;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 20px;
+  margin: 4px 2px;
+  cursor: pointer;
+  width:auto;
+} 
+ 
+ /* table definition used for tabel on several pages */
+.table_index, th, td {
+  table-layout: auto;
+  width: fit-content;
+  border: 1px solid;
+  vertical-align: top; 
+/*  vertical-align: baseline; */
+  height: auto; 
+  border-style:solid;
+  padding: 5px 1px;
+}
+
+.set-timer{
+/*    background-color: #f4f4f4; */
+    padding: 10px;
+    font-size:30px;
+    border-radius: 5px;
+    margin-bottom: 3px;  
+}
+
+label{
+ color: #000000; 
+ font-size: 25px;
+ margin-top: 4px;
+ margin-bottom: 4px;
+ padding: 1px;
+} 
+
+label2 {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 4px;
+}
+
+.table_noborder{
+  border-collapse: collapse;
+  border: none;
+}   
+
+.content { 
+  padding: 20px;
+}
+
+.set-timer input, .set-timer button {
+    width: auto; 
+    font-size: 20px;
+    color: #e87a05;
+    margin: 2px 0;
+}
+/*
+.form-container {
+    width: 400px;
+    margin: 20px auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+}
+*/
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+input[type="text"] {
+    width: auto;
+    padding: 10px;
+    margin-bottom: 5px;
+    border: 1px solid #FFFFFF;
+    border-radius: 4px;
+    font-size: 20px;
+}
+
+input[type="number"] {
+    width: 90px;
+    padding: 10px;
+    margin-bottom: 1px;
+    border-radius: 4px;
+    font-size: 20px;
+}
+
+input[type="radio"] {
+    padding: 5px;
+    margin-top: 10px;
+    margin: 0.4rem;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    font-size: 20px;
+}
+
+input[type="checkbox"] {
+    padding: 5px;
+    margin-top: 10px;
+    margin: 0.4rem;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    font-size: 20px;
+}
+
+input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+

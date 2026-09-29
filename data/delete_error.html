@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+
+<html>
+  <head>
+    <title>KostalPiko_Deleterror</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    
+    <script type="text/javascript">
+    <!-- the script below will take care that at page load the date/time is viewed -->
+        
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {              <!-- will execute a function when the readyState changes -->
+          if (this.readyState == 4 && this.status == 200) {  <!-- 4: request finished and response is ready; 200: "OK" -->
+            document.getElementById("datetime").innerHTML = this.responseText;
+          }
+        };
+       
+        xhttp.open("GET", "/datetime", true);  <!-- send a reqeust to the server -->
+        xhttp.send(); 
+  
+    </script>    
+  </head>
+  
+  <body>
+
+     <h2>An error is found during your DELETE request</h2>
+     <h2>One of the following errors occured: </h2>
+     <h2></h2>
+     <h4> *) An invalid button parameter was received</h4>
+     <h4> *) No number for the button was received</h4>
+     <h4> *) The number of the pressed button is out of range</h4>
+     <h4> *) The button you pressed was from a non used memory area (Free)</h4>
+     <h4> *) Your request for a DELETE action failed for some reason.</h4>
+     <h2></h2>
+     <h3>Please try again or contact your supplier</h3>
+     <h3>A restart of the KostalPiko Reader could help.</h3>
+
+  </body>
+  
+</html>
+

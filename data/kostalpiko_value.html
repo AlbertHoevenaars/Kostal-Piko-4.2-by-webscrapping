@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+
+<html>
+
+  <head>
+    <title>KostalPiko_values</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    
+    <script type="text/javascript">
+  
+      function refresh(refreshPeriod) 
+        {
+            setTimeout('location.reload(true)', refreshPeriod);
+        } 
+        window.onload = refresh(30000); <!-- 30 seconds -->
+
+  
+<!--    <!-- the script below will take care that at page load the date/time is viewed -->
+        
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {              <!-- will execute a function when the readyState changes -->
+          if (this.readyState == 4 && this.status == 200) {  <!-- 4: request finished and response is ready; 200: "OK" -->
+            document.getElementById("datetime").innerHTML = this.responseText;
+          }
+        };
+       
+        xhttp.open("GET", "/datetime", true);  <!-- send a reqeust to the server -->
+        xhttp.send(); 
+-->  
+    </script> 
+    
+  </head>
+
+  <!-- --------------------------------------------- -->
+  <h1>KostalPiko values</h1>
+  <h2 id="datetime">Current Date and Time: </h2>
+  <br>
+  
+  <table class="table_index">
+    <thead>
+      <tr>
+        <td><h1>Unit </h1></td>
+        <td><h1>Value</h1></td>
+      </tr>
+    </thead>
+    <tbody>
+       <tr> <td><h4>Actual Power (W)        </h4></td>  <td id="value_actual_power">     %ACTUAL_POWER%     </td> </tr>
+       <tr> <td><h4>Total Energy (kWh)      </h4></td>  <td id="value_total_energy">     %TOTAL_ENERGY%     </td> </tr>
+       <tr> <td><h4>Daily Energy (kWh)      </h4></td>  <td id="value_daily_energy">     %DAILY_ENERGY%     </td> </tr>
+       <tr> <td><h4>String1_Voltage (V)     </h4></td>  <td id="value_string1_voltage">  %STRING1_VOLTAGE%  </td> </tr>
+       <tr> <td><h4>String1_Current (A)     </h4></td>  <td id="value_string1_current">  %STRING1_CURRENT%  </td> </tr>
+       <tr> <td><h4>String2_Voltage (V)     </h4></td>  <td id="value_string2_voltage">  %STRING2_VOLTAGE%  </td> </tr>
+       <tr> <td><h4>String2_Current (A)     </h4></td>  <td id="value_string2_current">  %STRING2_CURRENT%  </td> </tr>
+       <tr> <td><h4>String3_Voltage (V)     </h4></td>  <td id="value_string3_voltage">  %STRING3_VOLTAGE%  </td> </tr>
+       <tr> <td><h4>String3_Current (A)     </h4></td>  <td id="value_string3_current">  %STRING3_CURRENT%  </td> </tr>
+       <tr> <td><h4>L1_Voltage (V)          </h4></td>  <td id="value_l1_voltage">       %L1_VOLTAGE%       </td> </tr>
+       <tr> <td><h4>L1_Power (W)            </h4></td>  <td id="value_l1_power">         %L1_POWER%         </td> </tr>
+       <tr> <td><h4>L2_Voltage (V)          </h4></td>  <td id="value_l2_voltage">       %L2_VOLTAGE%       </td> </tr>
+       <tr> <td><h4>L2_Power (W)            </h4></td>  <td id="value_l2_power">         %L2_POWER%         </td> </tr>
+       <tr> <td><h4>L3_Voltage (V)          </h4></td>  <td id="value_l3_voltage">       %L3_VOLTAGE%       </td> </tr>
+       <tr> <td><h4>L3_Power (W)            </h4></td>  <td id="value_l3_power">         %L3_POWER%         </td> </tr>
+       <tr> <td><h4>Status                  </h4></td>  <td id="value_l3_power">         %STATUS%           </td> </tr>
+    </tbody>
+  </table>
+  
+  
+  <body>
+      <!-- button to get back to main page -->
+    <p>
+      <a href="/">
+      <button class="button">Back to Main page</button>
+      </a>
+    </p>  
+
+  
+  </body> 
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE HTML>
+
+<html lang="en">
+   <head>
+      <title>KostalPiko main page </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+      <link rel="icon" type="image/png" href="/favicon.png">
+      <link rel="icon" type="image/x-icon" href="/favicon.ico">
+      <link rel="stylesheet" type="text/css" href="style.css">
+      
+      <script type="text/javascript">
+      <!-- the script below will take care that at page load the date/time is viewed -->
+          
+         var xhttp = new XMLHttpRequest();
+         xhttp.onreadystatechange = function() {              <!-- will execute a function when the readyState changes -->
+           if (this.readyState == 4 && this.status == 200) {  <!-- 4: request finished and response is ready; 200: "OK" -->
+             document.getElementById("datetime").innerHTML = this.responseText;
+           }
+         };
+         
+         xhttp.open("GET", "/datetime", true);  <!-- send a reqeust to the server -->
+         xhttp.send(); 
+      
+      </script>    
+
+   </head>
+
+   <body>
+      <!-- --------------------------------------------- -->
+      <h1>KostalPiko main page</h1>
+      <h2 id="datetime" style="color: #070812;">Current Date and Time: </h2>
+      <br>
+         <noscript>You need to enable JavaScript!</noscript>    
+          
+      <table class="table_index">
+         <thead>
+            <tr >
+              <td><h1>Selection</h1></td>
+              <td><h1>Meaning</h1></td>
+              <td><h1>Press the button</h1></td>
+            </tr>
+         </thead>
+        
+         <tbody>
+         
+            
+            <tr>
+               <td>
+                  <h3><strong>Kostal Piko values</strong></h3>
+               </td>
+               <td >
+                  <h4>View the electrical values from the KostalPiko.</h4>
+               </td> 
+               <td >
+                  <p>
+                     <a href="kostalpiko_value.html"><button class="button">KostalPiko Values</button>
+                     </a>
+                  </p>
+               </td>
+            </tr>
+            
+            <tr>
+               <td>
+                  <h3><strong>Memory</strong></h3>
+               </td>
+               <td >
+                  <h4>Gives an overview of what is the memory.</h4> 
+                  <h4>Download datasets via CSV or JSON file from the memory.</h4>
+                  <h4>Also resetting datasets from the memory.</h4>                  
+               </td>
+               <td>
+                  <p>
+                     <a href="memory.html"><button class="button">Memory</button>
+                     </a>
+                  </p>   
+               </td>
+            </tr>
+            
+            <tr>
+               <td>
+                  <h3><strong>System Settings</strong></h3>
+               </td>
+               <td>
+                  <h4>Make system settings like network credentials or reset here.</h4>
+               </td>
+               <td > 
+                  <p>
+                     <a href="systemsettings.html"><button class="button">System Settings</button>
+                     </a>
+                  </p>
+               </td>  
+            </tr>
+            
+            <tr>
+               <td>
+                  <h3><strong>Last Compile Date</strong></h3>
+               </td>
+               <td>
+                  <h4>%LAST_COMPILE%.</h4>
+               </td>
+ 
+            </tr>
+         
+         </tbody>
+      </table>
+      
+      
+      <!-- button to get back to main page -->
+      <p>
+<!--         <a href="/logout">  -->
+            <button class="button" onclick="logoutButton()">Logout</button>
+<!--         </a> -->
+      </p> 
+    
+      <script type="text/javascript">
+      
+         var value_interval = setInterval(function() {
+      
+          <!-- update date & time value -->
+          var xhttp = new XMLHttpRequest();
+          xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+              document.getElementById("datetime").innerHTML = this.responseText; // responsetext comes from server
+            }
+          };
+          xhttp.open("GET", "/datetime", true);
+          xhttp.send();                           // send to server
+         }, 10000); //10 Seconds update rate 
+         
+      </script>
+    
+      
+      <script> 
+         function logoutButton() {
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "/logout", true);
+            xhr.send();
+            setTimeout(function(){ window.open("/logged-out","_self"); }, 1000);
+         }
+      </script>
+    
+   </body>
+
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>KostalPiko_memory</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+
+  <body>
+    <h1>KostalPiko Memory usage</h1>
+    <h2 id="datetime">Current Date and Time: </h2>
+    <br>
+
+    <table class="table_index">
+      <thead>
+        <tr>
+          <td><h1>Area</h1></td>
+          <td><h1>Date</h1></td>
+          <td><h1>Get CSV</h1></td>
+          <td><h1>Get JSON</h1></td>
+          <td><h1>Delete</h1></td>
+        </tr>
+      </thead>
+      <tbody id="memory-table-body">
+        <noscript>Your browsing experience will be much better with JavaScript enabled!</noscript>
+      </tbody>
+    </table>
+
+    <p>
+      <a href="/">
+        <button class="button">Back to Main page</button>
+      </a>
+    </p>
+
+    <script>
+      var MEMORY_AREAS = 128; // <-- must be eual to "number_of_datagroups" in read_write_flash.h file
+
+      // Build the table rows
+      function buildTable(dates) {
+        var tbody = document.getElementById("memory-table-body");
+        var html = '';
+        for (var i = 0; i < MEMORY_AREAS; i++) {
+          var idx = String(i).padStart(3, '0');
+          var date = dates ? dates[i] : "...";
+          html +=
+            '<tr>' +
+              '<td><h3><strong>Memory Area ' + i + '</strong></h3></td>' +
+              '<td><h4 id="date' + idx + '">' + date + '</h4></td>' +
+              '<td><form action="/memory_update" method="GET"><button class="button" name="CSV"    value="' + i + '">Download CSV   </button></form></td>' +
+              '<td><form action="/memory_update" method="GET"><button class="button" name="JSON"   value="' + i + '">Download JSON  </button></form></td>' +
+              '<td><form action="/memory_update" method="GET"><button class="button" name="DELETE" value="' + i + '">Delete dataset </button></form></td>' +
+            '</tr>';
+        }
+        tbody.innerHTML = html;
+      }
+
+      // Fetch all dates in one request from /memory_dates
+      function fetchDates() {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
+            var dates = JSON.parse(this.responseText); // array of 128 strings
+            buildTable(dates);
+          }
+        };
+        xhttp.open("GET", "/memory_dates", true);
+        xhttp.send();
+      }
+
+      // Fetch date/time and update header
+      function fetchDateTime() {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("datetime").innerHTML = this.responseText;
+          }
+        };
+        xhttp.open("GET", "/datetime", true);
+        xhttp.send();
+      }
+
+      // Init on page load
+      buildTable(null);   // build skeleton first
+      fetchDates();       // then fill dates
+      fetchDateTime();
+
+      // Refresh date/time every 10s
+      setInterval(fetchDateTime, 10000);
+      setInterval(fetchDates, 30000);     // added 30 july 2026 to update column Date
+    </script>
+  </body>
+</html>

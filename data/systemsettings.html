@@ -1,0 +1,101 @@
+<!DOCTYPE HTML>
+
+<html lang="en">
+  <head>
+    <title>KostalPiko Settings page </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    
+    <script type="text/javascript">
+    <!-- the script below will take care that at page load the date/time is viewed -->
+        
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {              <!-- will execute a function when the readyState changes -->
+          if (this.readyState == 4 && this.status == 200) {  <!-- 4: request finished and response is ready; 200: "OK" -->
+            document.getElementById("datetime").innerHTML = this.responseText;
+          }
+        };
+       
+        xhttp.open("GET", "/datetime", true);  <!-- send a reqeust to the server -->
+        xhttp.send(); 
+  
+    </script>    
+
+  </head>
+
+  <body>
+    <!-- --------------------------------------------- -->
+    <h1>KostalPiko Settings page</h1>
+    <h2 id="datetime">Current Date and Time: </h2>
+    <br>
+    
+    <table class="table_index">
+      <thead>
+        <tr >
+          <td><h1>Selection</h1></td>
+          <td><h1>Meaning</h1></td>
+          <td><h1>Press the button</h1></td>
+        </tr>
+      </thead>
+      
+      <tbody>
+    
+        <tr>
+          <td>
+            <h3><strong>Network Credentials</strong></h3>
+          </td>
+          <td >
+            <h4>View/Modify the Login, Wifi, MQTT and KostalPiko Credentials. </h4>
+          </td> 
+          <td >
+            <p>
+              <a href="show_network_credentials.html"><button class="button">KostalPiko Reader network Credentials</button>
+              </a>
+            </p>
+          </td>
+        </tr>
+    
+        <tr>
+          <td>
+            <h3><strong>Reset</strong></h3>
+          </td>
+          <td>
+            <h4>Reset Wifi, MQTT, KostalPiko & OTA Credentials </h4>
+            <h4>Also reset full Memory and resetting the KostalPiko Reader.</h4>
+          </td>
+          <td>
+          <p>
+             <a href="reset.html"><button class="button">Reset</button>
+             </a>
+          </p>
+        </td>
+      </tr>
+    
+      </tbody>
+    </table>
+    
+    <!-- button to go back to main page -->
+    <br><br>
+     <a href="/">
+       <button class="button">Back to Main page</button>
+     </a>
+    
+    <script type="text/javascript">
+    
+      var value_interval = setInterval(function() {
+
+        <!-- update date & time value -->
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("datetime").innerHTML = this.responseText; // responsetext comes from server
+          }
+        };
+        xhttp.open("GET", "/datetime", true);
+        xhttp.send();                           // send to server
+       }, 10000); //10 Seconds update rate 
+    </script>
+   </body>
+
+</html>

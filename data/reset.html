@@ -1,0 +1,172 @@
+<!DOCTYPE HTML>
+
+<html lang="en">
+  <head>
+    <title>KostalPiko Reset page </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    
+    <script type="text/javascript">
+    <!-- the script below will take care that at page load the date/time is viewed -->
+        
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {              <!-- will execute a function when the readyState changes -->
+          if (this.readyState == 4 && this.status == 200) {  <!-- 4: request finished and response is ready; 200: "OK" -->
+            document.getElementById("datetime").innerHTML = this.responseText;
+          }
+        };
+       
+        xhttp.open("GET", "/datetime", true);  <!-- send a reqeust to the server -->
+        xhttp.send(); 
+  
+    </script>    
+
+  </head>
+
+  <body>
+    <!-- --------------------------------------------- -->
+    <h1>KostalPiko Reset page</h1>
+    <h2 id="datetime">Current Date and Time: </h2>
+    <br>
+    
+    <noscript>You need to enable JavaScript!</noscript>    
+
+    
+    <table class="table_index">
+      <thead>
+        <tr >
+          <td><h1>Selection</h1></td>
+          <td><h1>Meaning</h1></td>
+          <td><h1>Press the button</h1></td>
+        </tr>
+      </thead>
+      
+      <tbody>
+    
+        <tr>
+          <td>
+            <h3><strong>Reset Wifi Credentials</strong></h3>
+          </td>
+          <td>
+            <h4>Removes the Wifi credentials from the KostalPiko Reader. </h4>
+            <h4>The reader will restart and a Wifi Access Point is created. </h4>
+            <h4>The current Wifi connection to the KostalPiko Reader will be lost. </h4>
+            <h4>Reconnect it to your network!</h4>
+          </td>
+          <td>
+            <p>
+              <a href="reset_wifi"><button class="button" name="res_wifi" value="01">Reset Wifi</button>
+              </a>
+            </p>
+          </td>
+        </tr>
+    
+        <tr>
+          <td>
+            <h3><strong>Reset MQTT Credentials</strong></h3>
+          </td>
+          <td>
+            <h4>Removes the MQTT credentials from the KostalPiko Reader. </h4>
+            <h4>KostalPiko Reader will restart!</h4>
+          </td>
+          <td>
+            <p>
+              <a href="reset_mqtt"><button class="button" name="res_mqtt" value="01">Reset MQTT</button>
+              </a>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <h3><strong>Reset KostalPiko Credentials</strong></h3>
+          </td>
+          <td>
+            <h4>Removes the KostalPiko credentials from the KostalPiko Reader. </h4>
+            <h4>KostalPiko Reader will restart!</h4>
+          </td>
+          <td>
+            <p>
+              <a href="reset_kostalpiko"><button class="button" name="res_kostalpiko" value="01">Reset KostalPiko</button>
+              </a>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <h3><strong>Reset OTA Password</strong></h3>
+          </td>
+          <td>
+            <h4>Removes the OTA password from the KostalPiko Reader. </h4>
+            <h4>KostalPiko Reader will restart!</h4>
+          </td>
+          <td>
+            <p>
+              <a href="reset_ota"><button class="button" name="res_ota" value="01">Reset OTA password</button>
+              </a>
+            </p>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <h3><strong>Reset Memory</strong></h3>
+          </td>
+          <td>
+            <h4>All saved data from the memory will be removed. </h4>
+            <h4>KostalPiko Reader will restart!</h4>
+          </td>
+          <td>
+          <p>
+             <a href="reset_memory"><button class="button" name="res_memory" value="01">Reset Memory</button>
+             </a>
+          </p>
+        </td>
+      </tr>
+    
+       <tr>
+          <td>
+            <h3><strong>Reset All Settings</strong></h3>
+          </td>
+          <td>
+            <h4>Removes all settings from the KostalPiko Reader. </h4>
+            <h4>The reader will restart and a Wifi Access Point is created. </h4>
+          </td>
+          <td > 
+            <p>
+              <a href="reset_all"><button class="button" name="res_all" value="01">Reset All</button>
+              </a>
+            </p>
+          </td>  
+        </tr>
+
+      </tbody>
+    </table>
+    
+    <script type="text/javascript">
+    
+      var value_interval = setInterval(function() {
+
+        <!-- update date & time value -->
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("datetime").innerHTML = this.responseText; // responsetext comes from server
+          }
+        };
+        xhttp.open("GET", "/datetime", true);
+        xhttp.send();                           // send to server
+       }, 10000); //10 Seconds update rate 
+    </script>
+    
+            
+        <!-- button to get back to main page -->
+        <p>
+          <a href="/">
+          <button class="button">Back to Main page</button>
+          </a>
+        </p>  
+        
+   </body>
+
+</html>
