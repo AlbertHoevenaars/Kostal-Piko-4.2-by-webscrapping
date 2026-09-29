@@ -21,7 +21,7 @@ Functions list:
 *	Use pushbutton for full reset 
 *	Read KostalPiko values via CSV or JSON file
 *	Status of KostalPiko
-*	Programming via RS232 of OTA (password protected)
+*	Programming via RS232 or OTA (password protected)
 
 Keep in mind that I am not a software programmer. I am a hardware designer mainly designing FPGAs by means of writing VHDL.
 So, there will be many parts to improve. At least this design is working
