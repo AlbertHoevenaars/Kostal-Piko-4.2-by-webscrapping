@@ -25,3 +25,6 @@ Functions list:
 
 Keep in mind that I am not a software programmer. I am a hardware designer mainly designing FPGAs by means of writing VHDL.
 So, there will be many parts to improve. At least this design is working
+
+I used an ESP8266 with a flash memory to store values. In fact if you have mqtt running you can skip the flash memory.
+See the schematic.pdf file
