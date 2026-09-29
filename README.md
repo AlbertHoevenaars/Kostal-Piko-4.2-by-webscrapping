@@ -2,8 +2,8 @@
 Values read from the Kostal Piko inverter are read from the website and available as CSV, Json and mqtt values.
 
 Functions list:
-•	Created for and only tested on a KostaPiko 4.2 Inverter
-•	Create at first start an Access Point for Wifi connection
+*	Created for and only tested on a KostaPiko 4.2 Inverter
+*	Create at first start an Access Point for Wifi connection
 •	Let user connect device to their own home network. With static or DHCP IP number
 •	Read time from NTP server.
 •	Holds webserver with webpage to control and view status of the KostalPiko Reader
